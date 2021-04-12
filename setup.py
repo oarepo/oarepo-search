@@ -42,14 +42,14 @@ install_requires = [
 packages = find_packages()
 
 # Get the version string. Cannot be done with import!
-# g = {}
-# with open(os.path.join('oarepo_search', 'version.py'), 'rt') as fp:
-#     exec(fp.read(), g)
-#     version = g['__version__']
+g = {}
+with open(os.path.join('oarepo_search', 'version.py'), 'rt') as fp:
+    exec(fp.read(), g)
+    version = g['__version__']
 
 setup(
     name='oarepo-search',
-    version='1.0.0a1',  # version,
+    version=version,
     description=__doc__,
     long_description=readme + '\n\n' + history,
     keywords='invenio oarepo search',
@@ -64,39 +64,25 @@ setup(
     platforms='any',
     entry_points={
         # 'flask.commands': [],
-        # 'invenio_base.apps': [
-        #     'oarepo_search = oarepo_search:OARepoCommunities',
-        # ],
+        'invenio_base.apps': [
+            'oarepo_search = oarepo_search:OARepoSearch',
+        ],
+        'invenio_base.api_apps': [
+            'oarepo_search = oarepo_search:OARepoSearch',
+        ],
         # 'invenio_admin.actions': [],
-        # 'invenio_access.system_roles': [
-        #     'community_record_owner = oarepo_search.permissions:community_record_owner',
-        # ],
+        # 'invenio_access.system_roles': [],
         # 'invenio_assets.bundles': [],
-        # 'invenio_base.api_apps': [
-        #     'oarepo_search = oarepo_search:OARepoCommunities',
-        # ],
         # 'invenio_base.api_blueprints': [],
         # 'invenio_base.blueprints': [],
         # 'invenio_celery.tasks': [],
         # 'invenio_db.models': [],
-        # 'invenio_db.models': [
-        #     'oarepo_search = oarepo_search.models',
-        # ],
-        # 'invenio_db.alembic': [
-        #     'oarepo_search = oarepo_search:alembic',
-        # ],
-        # 'invenio_base.api_converters': [
-        #     'commpid = oarepo_search.converters:CommunityPIDConverter',
-        # ],
-        # 'invenio_base.converters': [
-        #     'commpid = oarepo_search.converters:CommunityPIDConverter',
-        # ],
-        # 'oarepo_mapping_includes': [
-        #     'oarepo_search = oarepo_search.included_mappings'
-        # ],
-        # 'invenio_jsonschemas.schemas': [
-        #     'oarepo_search = oarepo_search.jsonschemas',
-        # ],
+        # 'invenio_db.models': [],
+        # 'invenio_db.alembic': [],
+        # 'invenio_base.api_converters': [],
+        # 'invenio_base.converters': [],
+        # 'oarepo_mapping_includes': [],
+        # 'invenio_jsonschemas.schemas': [],
         # 'invenio_pidstore.minters': [],
         # 'invenio_records.jsonresolver': [],
     },
