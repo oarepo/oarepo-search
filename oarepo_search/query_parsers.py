@@ -38,9 +38,9 @@ def simple_query_parser(qstr: str = None, endpoint_name: str = None):
 
 
 def luqum_query_parser(tree, index_name=None, mapping=None):
+    if index_name and mapping:
+        raise Exception("You cannot specify both index_name and mapping")
     try:
-        if index_name and mapping:
-            raise Exception("You cannot specify both index_name and mapping")
         if not mapping:  # pragma: no cover
             if isinstance(index_name, PrefixedIndexList):
                 index_name = index_name[0]
